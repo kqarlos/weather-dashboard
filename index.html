@@ -21,13 +21,43 @@
     <script src="https://code.jquery.com/jquery.js"></script>
 
     <!-- Moment.js -->
-    <script src="https://unpkg.com/moment"></script> 
+    <script src="https://unpkg.com/moment"></script>
 
     <title>Weather Dashboard</title>
 </head>
 
 <body>
 
+    <div class="jumbotron jumbotron-fluid mb-0 py-2 bg-dark">
+        <div class="container">
+            <h1 class="display-4 text-white text-center">Weather Dashboard</h1>
+        </div>
+    </div>
+
+    <div class="container bg-light py-4 mt-0 float-left w-25">
+        <div class="row">
+            <div class="col-12 font-weight-bold">Search for a City:</div>
+        </div>
+        <div class="row my-2">
+            <div class="col-12">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control h-100" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary h-100 fa fa-search" type="submit"></button>
+                  </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action">Cras justo odio</button>
+                    <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+                    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+                    <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+                    <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
+                  </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="assets/js/script.js"></script>
