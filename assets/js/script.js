@@ -1,28 +1,22 @@
-function setCurrentWeather(location, temperature, humidity, windSpeed, uv) {
-
+function renderCurrentWeather(location, temperature, humidity, windSpeed, uv) {
     $("#location").empty();
     $("#location").append(location);
     $("#temperature").empty();
-    $("#temperature").append(temperature);;
+    $("#temperature").append(temperature);
     $("#humidity").empty();
     $("#humidity").append(humidity);
     $("#windSpeed").empty();
-    $("#windSpeed").append(windSpeed);;
+    $("#windSpeed").append(windSpeed);
     $("#uv").empty();
     $("#uv").append(uv);
 }
 
-
-
 $("button").on("click", function () {
     event.preventDefault();
-    console.log("clicked");
     var location = $("#locationInput").val();
-
+    //query bulding...
     var APIKey = "e42ce6fff3cc019aac43965299686295";
-    var city = location;
-    console.log(city);
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=" + APIKey;
 
     $.ajax({
         url: queryURL,
@@ -30,8 +24,23 @@ $("button").on("click", function () {
     }).then(function (response) {
         console.log(queryURL);
         console.log(response);
+        var lat = response.coord.lat;
+        var lon = response.coord.lon;
 
-        setCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, 0);
+        //query building...
+        APIKey = "e42ce6fff3cc019aac43965299686295";
+        queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (uvresponse) {
+            console.log(queryURL);
+            console.log(uvresponse);
+            renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value);
+        });
+
+
     });
 
 });
