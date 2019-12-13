@@ -1,3 +1,5 @@
+var locations = [];
+
 function renderCurrentWeather(location, temperature, humidity, windSpeed, uv) {
     $("#location").empty();
     $("#location").append(location);
@@ -11,10 +13,26 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv) {
     $("#uv").append(uv);
 }
 
-$("button").on("click", function () {
+$("#searchLocation").on("click", function () {
     event.preventDefault();
     var location = $("#locationInput").val();
-    //query bulding...
+    $("#locationInput").val("");
+
+    query(location);
+
+    addButton(location);
+
+
+});
+
+$(document).on("click", ".city-button", function () {
+    console.log("clicked");
+    var location = $(this).attr("data-city");
+    query(location);
+});
+
+function query(location) {
+    //query building
     var APIKey = "e42ce6fff3cc019aac43965299686295";
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=" + APIKey;
 
@@ -43,4 +61,17 @@ $("button").on("click", function () {
 
     });
 
-});
+}
+
+function addButton(location) {
+
+    var button = $("<button>");
+    button.addClass("list-group-item list-group-item-action city-button");
+    button.attr("type", "button");
+    button.attr("data-city", location);
+    button.text(location)
+    $("#history").append(button);
+
+    // <button type="button" class="list-group-item list-group-item-action">Cras justo odio</button>
+
+}
