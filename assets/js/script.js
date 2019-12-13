@@ -29,7 +29,7 @@ $("button").on("click", function () {
 
         //query building...
         APIKey = "e42ce6fff3cc019aac43965299686295";
-        queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+        queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
 
         $.ajax({
             url: queryURL,
