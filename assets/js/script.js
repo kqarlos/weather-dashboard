@@ -1,11 +1,42 @@
 var locations = [];
 
-function renderCurrentWeather(location, temperature, humidity, windSpeed, uv) {
+function getIcon(condition) {
+    console.log(condition);
+    if (condition === "Rain")
+        return "fas fa-cloud-showers-heavy";
+
+    if (condition === "Clouds")
+        return "fas fa-cloud";
+
+    if (condition === "Clear")
+        return "fas fa-sun";
+
+    if (condition === "Drizzle")
+        return "fas fa-cloud-rain";
+
+    if (condition === "Snow")
+        return "fas fa-snowflake";
+
+    if (condition === "Mist")
+        return "fas fa-smog";
+
+    if (condition === "Fog")
+        return "fas fa-smog";
+
+}
+
+function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, condition) {
     $("#location").empty();
     $("#location").append(location);
     $("#location").append(" ");
     var date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
     $("#location").append(date);
+    $("#location").append("  ");
+
+    var icon = $("<span>");
+    icon.addClass(getIcon(condition));
+    $("#location").append(icon);
+
 
 
     $("#temperature").empty();
@@ -37,7 +68,7 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv) {
 
 $("#searchLocation").on("click", function () {
     event.preventDefault();
-    var location = $("#locationInput").val();
+    var location = $("#locationInput").val().trim();
     $("#locationInput").val("");
 
     query(location);
@@ -75,8 +106,8 @@ function queryForecast(location) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(queryURL);
-        // console.log(response);
+        console.log(queryURL);
+        console.log(response);
         var forecast = response.list;
         for (var i = 0; i < forecast.length; i++) {
             var cardNumber = 0;
@@ -95,7 +126,8 @@ function queryForecast(location) {
                 var date = forecast[i].dt_txt;
                 var temperature = forecast[i].main.temp;
                 var humidity = forecast[i].main.humidity;
-                addCard(cardNumber, date, temperature, humidity);
+                var condition = forecast[i].weather[0].main;
+                addCard(cardNumber, date, temperature, humidity, condition);
             }
         }
     });
@@ -110,8 +142,8 @@ function query(location) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(queryURL);
-        // console.log(response);
+        console.log(queryURL);
+        console.log(response);
         var lat = response.coord.lat;
         var lon = response.coord.lon;
 
@@ -125,7 +157,7 @@ function query(location) {
         }).then(function (uvresponse) {
             // console.log(queryURL);
             // console.log(uvresponse);
-            renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value);
+            renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value, response.weather[0].main);
         });
 
 
@@ -133,7 +165,7 @@ function query(location) {
 
 }
 
-function addCard(index, date, temperature, humidity) {
+function addCard(index, date, temperature, humidity, condition) {
 
     // console.log("creating card #: " + index);
 
@@ -152,8 +184,11 @@ function addCard(index, date, temperature, humidity) {
     // fDate = fDate[1] + "/" + fDate[2] + "/" + fDate[0];
     title.text(date);
 
+    var icon = $("<span>");
+    icon.addClass(getIcon(condition));
+
     var t = $("<p>");
-    t.addClass("card-text");
+    t.addClass("card-text pt-3");
     t.text("Temp: ");
     t.append(temperature);
     t.append(" °F");
@@ -167,6 +202,7 @@ function addCard(index, date, temperature, humidity) {
 
 
     cardBody.append(title);
+    cardBody.append(icon);
     cardBody.append(t);
     cardBody.append(h);
     // console.log("comleted card body: ");
@@ -213,7 +249,7 @@ function addButton(location) {
     localStorage.setItem("locations", JSON.stringify(locations));
 }
 
-function setUp(){
+function setUp() {
     if (localStorage.getItem("locations")) {
         locations = JSON.parse(localStorage.getItem("locations"));
         for (var i = 0; i < locations.length; i++) {
