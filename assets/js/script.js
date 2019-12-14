@@ -23,6 +23,9 @@ $("#searchLocation").on("click", function () {
 
     addButton(location);
 
+    $("#currentWeather").css("display", "block");
+    $("#forecast").css("display", "block");
+
 
 });
 
@@ -93,6 +96,7 @@ function addCard(index, date, temperature, humidity) {
 
     var card = $("<div>");
     card.addClass("card");
+    card.addClass("bg-primary");
 
     var cardBody = $("<div>");
     cardBody.addClass("card-body");

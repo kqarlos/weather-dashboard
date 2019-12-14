@@ -1,0 +1,9 @@
+#currentWeather, #forecast {
+    display: none;
+    width: 80%;
+}
+
+#leftBar {
+    width: 20%;
+}
+
