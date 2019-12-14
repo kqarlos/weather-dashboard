@@ -4,7 +4,7 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv) {
     $("#location").empty();
     $("#location").append(location);
     $("#location").append(" ");
-     var date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
+    var date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
     $("#location").append(date);
 
 
@@ -21,6 +21,17 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv) {
     $("#windSpeed").append(" MPH");
 
     $("#uv").empty();
+    if (uv < 3)
+        $("#uv").css("background-color", "green");
+    else if (uv < 6)
+        $("#uv").css("background-color", "yellow");
+    else if (uv < 8)
+        $("#uv").css("background-color", "orange");
+    else if (uv < 11)
+        $("#uv").css("background-color", "red");
+    else
+        $("#uv").css("background-color", "purple");
+
     $("#uv").append(uv);
 }
 
@@ -63,8 +74,8 @@ function queryForecast(location) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(queryURL);
-        console.log(response);
+        // console.log(queryURL);
+        // console.log(response);
         var forecast = response.list;
         for (var i = 0; i < forecast.length; i++) {
             var cardNumber = 0;
@@ -98,8 +109,8 @@ function query(location) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(queryURL);
-        console.log(response);
+        // console.log(queryURL);
+        // console.log(response);
         var lat = response.coord.lat;
         var lon = response.coord.lon;
 
@@ -111,8 +122,8 @@ function query(location) {
             url: queryURL,
             method: "GET"
         }).then(function (uvresponse) {
-            // console.log(queryURL);
-            // console.log(uvresponse);
+            console.log(queryURL);
+            console.log(uvresponse);
             renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value);
         });
 
