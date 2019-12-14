@@ -261,4 +261,7 @@ function setUp() {
 
 }
 
-setUp();
+
+$(document).ready(function(){ 
+    setUp();
+}); 

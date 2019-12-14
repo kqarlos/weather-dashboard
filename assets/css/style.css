@@ -1,5 +1,6 @@
 #currentWeather, #forecast {
     display: none;
+    margin: 0 20px;
     width: 80%;
 }
 
@@ -15,3 +16,25 @@ body {
     font-family: sans-serif;
 }
 
+@media screen and (max-width: 1455px) {
+    
+    #currentWeather, #forecast {
+        width: 90%;
+    }
+    
+    #leftBar {
+        width: 100%;
+    }
+    
+
+}
+
+@media screen and (max-width: 712px) {
+    
+    #currentWeather, #forecast {
+        margin: 0;
+    }
+
+    
+
+}
