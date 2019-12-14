@@ -70,7 +70,6 @@ function queryForecast(location) {
     //query building...
     var APIKey = "e42ce6fff3cc019aac43965299686295";
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIKey;
-    http://api.openweathermap.org/data/2.5/forecast?q=London&appid=e42ce6fff3cc019aac43965299686295
 
     $.ajax({
         url: queryURL,
