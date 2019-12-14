@@ -55,6 +55,8 @@ $(document).on("click", ".city-button", function () {
     var location = $(this).attr("data-city");
     query(location);
     queryForecast(location);
+    $("#currentWeather").css("display", "block");
+    $("#forecast").css("display", "block");
 });
 
 function formatDate(date) {
@@ -122,8 +124,8 @@ function query(location) {
             url: queryURL,
             method: "GET"
         }).then(function (uvresponse) {
-            console.log(queryURL);
-            console.log(uvresponse);
+            // console.log(queryURL);
+            // console.log(uvresponse);
             renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value);
         });
 
@@ -188,6 +190,39 @@ function addButton(location) {
     button.text(location)
     $("#history").append(button);
 
-    // <button type="button" class="list-group-item list-group-item-action">Cras justo odio</button>
+    if (localStorage.getItem("locations")) {
+        //if set get it and check if we need to create new    
+
+        locations = JSON.parse(localStorage.getItem("locations"));
+        var index = -1;
+        for (var i = 0; i < locations.length; i++) {
+            // id found
+            if (locations[i] === location) {
+                index = i;
+            }
+        }
+        //if index is -1 id was not found and we need to create a new 
+        if (index === -1) {
+            locations.push(location);
+        } else {
+            locations[index] = location;
+        }
+    } else {
+        locations.push(location);
+    }
+    //update locations iten on local storage
+    localStorage.setItem("locations", JSON.stringify(locations));
+}
+
+function setUp(){
+    if (localStorage.getItem("locations")) {
+        locations = JSON.parse(localStorage.getItem("locations"));
+        for (var i = 0; i < locations.length; i++) {
+            var location = locations[i];
+            addButton(location);
+        }
+    }
 
 }
+
+setUp();
