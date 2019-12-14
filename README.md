@@ -10,16 +10,20 @@ This application is compatible with the most commonly used web browsers.
 
 1. Site 
 
-![Site](assets/images/site-image.png)
+![Site](assets/images/initial.png)
 
-2. 
+2. After a couple of inputs 
 
-
-
-3. 
+![Site](assets/images/2.png)
 
 
+3. Upon exiting and coming back to the page search history remains
 
+![Site](assets/images/3.png)
+
+4. Clicking in one of the recorded history buttons gives the same result as searching for the city again
+
+![Site](assets/images/4.png)
 
 ## Code Snippets
 

@@ -178,6 +178,7 @@ function addCard(index, date, temperature, humidity, condition) {
 
     var title = $("<h5>");
     title.addClass("card-title font-weight-bold");
+    title.css("font-size", "large");
     // console.log("date: ");
     date = formatDate(date);
     // var fDate = date.split(" ")[0].split("-");
