@@ -8,9 +8,9 @@ This application is compatible with the most commonly used web browsers.
 
 ## Site Pictures
 
-1. Site 
+1. Live
 
-![Site](assets/images/initial.png)
+![Site](assets/images/weather-live.gif)
 
 2. After a couple of inputs 
 
@@ -24,6 +24,8 @@ This application is compatible with the most commonly used web browsers.
 4. Clicking in one of the recorded history buttons gives the same result as searching for the city again
 
 ![Site](assets/images/4.png)
+
+
 
 ## Code Snippets
 
