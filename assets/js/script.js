@@ -1,55 +1,46 @@
 var locations = [];
 
+//Get icon classes for font awesome
 function getIcon(condition) {
-    console.log(condition);
-    if (condition === "Rain")
-        return "fas fa-cloud-showers-heavy";
-
-    if (condition === "Clouds")
-        return "fas fa-cloud";
-
-    if (condition === "Clear")
-        return "fas fa-sun";
-
-    if (condition === "Drizzle")
-        return "fas fa-cloud-rain";
-
-    if (condition === "Snow")
-        return "fas fa-snowflake";
-
-    if (condition === "Mist")
-        return "fas fa-smog";
-
-    if (condition === "Fog")
-        return "fas fa-smog";
-
+    switch (condition) {
+        case "Rain":
+            return "fas fa-cloud-showers-heavy";
+        case "Clouds":
+            return "fas fa-cloud";
+        case "Clear":
+            return "fas fa-sun";
+        case "Drizzle":
+            return "fas fa-cloud-rain";
+        case "Snow":
+            return "fas fa-snowflake";
+        case "Mist":
+            return "fas fa-smog";
+        case "Fog":
+            return "fas fa-smog";
+        default:
+            return "fas fa-cloud-sun";
+        }
 }
 
+//Clear information
 function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, condition) {
     $("#location").empty();
-    $("#location").append(location);
-    $("#location").append(" ");
+    $("#location").append(`${location} `);
     var date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
-    $("#location").append(date);
-    $("#location").append("  ");
+    $("#location").append(`${date} `);
 
     var icon = $("<span>");
     icon.addClass(getIcon(condition));
     $("#location").append(icon);
 
-
-
     $("#temperature").empty();
-    $("#temperature").append(temperature);
-    $("#temperature").append(" °F");
+    $("#temperature").append(`${temperature} °F`);
 
     $("#humidity").empty();
-    $("#humidity").append(humidity);
-    $("#humidity").append("%");
+    $("#humidity").append(`${humidity}%`);
 
     $("#windSpeed").empty();
-    $("#windSpeed").append(windSpeed);
-    $("#windSpeed").append(" MPH");
+    $("#windSpeed").append(`${windSpeed} MPH`);
 
     $("#uv").empty();
     if (uv < 3)
@@ -66,8 +57,8 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, co
     $("#uv").append(uv);
 }
 
-$("#searchLocation").on("click", function () {
-    event.preventDefault();
+$("#searchLocation").on("click", function (e) {
+    e.preventDefault();
     var location = $("#locationInput").val().trim();
     $("#locationInput").val("");
 
@@ -78,7 +69,6 @@ $("#searchLocation").on("click", function () {
 
     $("#currentWeather").css("display", "block");
     $("#forecast").css("display", "block");
-
 
 });
 
