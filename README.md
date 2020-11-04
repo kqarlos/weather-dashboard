@@ -1,33 +1,42 @@
 # Weather Dashboard
 
-The weather Dashboard is a clean and easy to use application that gets straigh to the point. Type in a city, get the current weather and a 5 day forecast. This application keeps a list of previously searched cities for convinience.
+## Table of Contents
 
-## Getting Started
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
 
-This application is compatible with the most commonly used web browsers.
 
-## Site Pictures
+## Installation
 
-1. Live
+* [See Live Site](https://kqarlos.github.io/weather-dashboard)
+
+## Usage
+
+This application allows to type in a city and get the current weather and a 5 day forecast of this city. This application keeps a list of previously searched cities for convinience.
+
+### Screenshots
+
+- Live
 
 ![Site](assets/images/weather-live.gif)
 
-2. After a couple of inputs 
+- After a couple of inputs 
 
 ![Site](assets/images/2.png)
 
 
-3. Upon exiting and coming back to the page search history remains
+- Upon exiting and coming back to the page search history remains
 
 ![Site](assets/images/3.png)
 
-4. Clicking in one of the recorded history buttons gives the same result as searching for the city again
+- Clicking in one of the recorded history buttons gives the same result as searching for the city again
 
 ![Site](assets/images/4.png)
 
 
 
-## Code Snippets
+### Code Snippets
 
 
 1. queryForecast();
@@ -117,34 +126,20 @@ function addCard(index, date, temperature, humidity) {
 
 ```
 
+## Credits 
+
+### Author
+
+- Carlos Toledo 
+- Github: [kqarlos](https://www.github.com/kqarlos)
+- LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
 
 
-## Built With
-
+### Built With
+    
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Bootstrap](https://getbootstrap.com/)
 * [Javascript](https://www.javascript.com/)
 * [Moment.js](https://momentjs.com/docs/)
 * [Open Weather API](https://openweathermap.org/api)
-
-## Deployed Link
-
-* [See Live Site](https://kqarlos.github.io/weather-dashboard)
-
-## Author
-
- * **Carlos Toledo** 
-
-## Links
-
-- [Link to Day Weather Dashboard](https://github.com/kqarlos/weather-dashboard)
-- [Link to Github](https://www.github.com/kqarlos)
-- [Link to LinkedIn](https://www.linkedin.com/in/carlos-toledo415/)
-
-
-## Acknowledgments
-
-* [W3 Schools](https://www.w3schools.com/)
-* [Bootstrap components](https://getbootstrap.com/docs/4.4/components/navbar/)
-* [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)

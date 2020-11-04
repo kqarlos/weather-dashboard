@@ -57,6 +57,7 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, co
     $("#uv").append(uv);
 }
 
+//On click, handle logic to search for weather given a location
 $("#searchLocation").on("click", function (e) {
     e.preventDefault();
     var location = $("#locationInput").val().trim();
@@ -72,6 +73,7 @@ $("#searchLocation").on("click", function (e) {
 
 });
 
+//Listen if one of the previouly searched cities' dynamically genereted button is clicked
 $(document).on("click", ".city-button", function () {
     var location = $(this).attr("data-city");
     query(location);
@@ -157,11 +159,8 @@ function query(location) {
 
 function addCard(index, date, temperature, humidity, condition) {
 
-    // console.log("creating card #: " + index);
-
     var card = $("<div>");
-    card.addClass("card");
-    card.addClass("bg-primary text-white");
+    card.addClass("card bg-primary text-white");
 
     var cardBody = $("<div>");
     cardBody.addClass("card-body");
@@ -169,10 +168,7 @@ function addCard(index, date, temperature, humidity, condition) {
     var title = $("<h5>");
     title.addClass("card-title font-weight-bold");
     title.css("font-size", "large");
-    // console.log("date: ");
     date = formatDate(date);
-    // var fDate = date.split(" ")[0].split("-");
-    // fDate = fDate[1] + "/" + fDate[2] + "/" + fDate[0];
     title.text(date);
 
     var icon = $("<span>");
@@ -181,27 +177,18 @@ function addCard(index, date, temperature, humidity, condition) {
     var t = $("<p>");
     t.addClass("card-text pt-3");
     t.text("Temp: ");
-    t.append(temperature);
-    t.append(" °F");
-
+    t.append(`${temperature} °F`);
 
     var h = $("<p>");
     h.addClass("card-text pt-3");
-    h.text("Humidity: ");
-    h.append(humidity);
-    h.append("%");
-
+    h.text(`Humidity: ${humidity}%`);
 
     cardBody.append(title);
     cardBody.append(icon);
     cardBody.append(t);
     cardBody.append(h);
-    // console.log("comleted card body: ");
-    // console.log(cardBody);
 
     card.append(cardBody);
-    // console.log("comleted card: ");
-    // console.log(card);
 
     $("#" + index).empty();
     $("#" + index).append(card);
