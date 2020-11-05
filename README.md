@@ -11,6 +11,7 @@ This application allows to type in a city and get the current weather and a 5 da
     * [Screenshots](#screenshots)
     * [Snippets](#snippets)
 * [Credits](#credits)
+* [License](#license)
 
 
 ## Installation
@@ -149,3 +150,7 @@ function addCard(index, date, temperature, humidity) {
 * [Javascript](https://www.javascript.com/)
 * [Moment.js](https://momentjs.com/docs/)
 * [Open Weather API](https://openweathermap.org/api)
+
+## Licence
+
+![GitHub](https://img.shields.io/github/license/kqarlos/weather-dashboard)
