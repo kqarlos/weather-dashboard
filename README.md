@@ -151,6 +151,6 @@ function addCard(index, date, temperature, humidity) {
 * [Moment.js](https://momentjs.com/docs/)
 * [Open Weather API](https://openweathermap.org/api)
 
-## Licence
+## License
 
 ![GitHub](https://img.shields.io/github/license/kqarlos/weather-dashboard)
