@@ -8,6 +8,8 @@ This application allows to type in a city and get the current weather and a 5 da
 
 * [Installation](#installation)
 * [Usage](#usage)
+    * [Screenshots](#screenshots)
+    * [Snippets](#snippets)
 * [Credits](#credits)
 
 
@@ -40,7 +42,7 @@ This application is compatible with the most commonly used web browsers.
 
 
 
-### Code Snippets
+### Snippets
 
 
 1. queryForecast();
