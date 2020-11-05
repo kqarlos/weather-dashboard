@@ -1,5 +1,9 @@
 # Weather Dashboard
 
+## Description
+
+This application allows to type in a city and get the current weather and a 5 day forecast of this city. This application keeps a list of previously searched cities for convinience.
+
 ## Table of Contents
 
 * [Installation](#installation)
@@ -9,11 +13,11 @@
 
 ## Installation
 
+This application is compatible with the most commonly used web browsers.
+
 * [See Live Site](https://kqarlos.github.io/weather-dashboard)
 
 ## Usage
-
-This application allows to type in a city and get the current weather and a 5 day forecast of this city. This application keeps a list of previously searched cities for convinience.
 
 ### Screenshots
 
@@ -130,7 +134,7 @@ function addCard(index, date, temperature, humidity) {
 
 ### Author
 
-- Carlos Toledo 
+- - Carlos Toledo: [portfolio](https://professional-portfolio2020.herokuapp.com/)
 - Github: [kqarlos](https://www.github.com/kqarlos)
 - LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
 
