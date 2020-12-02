@@ -1,5 +1,14 @@
 # Weather Dashboard
 
+  ![Languages](https://img.shields.io/github/languages/count/kqarlos/weather-dashboard)
+  ![Top Language](https://img.shields.io/github/languages/top/kqarlos/weather-dashboard)
+  ![Code Size](https://img.shields.io/github/languages/code-size/kqarlos/weather-dashboard)
+  ![Repo Size](https://img.shields.io/github/repo-size/kqarlos/weather-dashboard)
+  ![Total Lines](https://img.shields.io/tokei/lines/github/kqarlos/weather-dashboard)
+  ![Last Commit](https://img.shields.io/github/last-commit/kqarlos/weather-dashboard)
+  ![Followers](https://img.shields.io/github/followers/kqarlos?style=social)
+
+
 ## Description
 
 This application allows to type in a city and get the current weather and a 5 day forecast of this city. This application keeps a list of previously searched cities for convinience.
