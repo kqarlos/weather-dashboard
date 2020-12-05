@@ -167,6 +167,7 @@ function addCard(index, date, temperature, humidity) {
     <a href="https://getbootstrap.com/"><img src="https://img.shields.io/badge/-Bootstrap-blueviolet?style=for-the-badge" alt="Bootstrap" /></a>
     <a href="https://momentjs.com/docs/"><img src="https://img.shields.io/badge/-Moment.js-success?style=for-the-badge" alt="Moment.js" /></a>
     <a href="https://openweathermap.org/api"><img src="https://img.shields.io/badge/-Open Weather API-success?style=for-the-badge" alt="Open Weather API" /></a>
+    <a href="https://jquery.com/"><img src="https://img.shields.io/badge/-JQuery-blue?style=for-the-badge" alt="JQuery" /></a>
 </p>
 
 ## License
