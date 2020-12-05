@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-
 # Weather Dashboard 🌩️
 
 </br>
@@ -156,7 +154,7 @@ function addCard(index, date, temperature, humidity) {
 
 - 💼 Carlos Toledo: [portfolio](https://professional-portfolio2020.herokuapp.com/)
 - :octocat: Github: [kqarlos](https://www.github.com/kqarlos)
-- <i class="fab fa-linkedin"></i> LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
+- LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
 
 
 ### Built With
