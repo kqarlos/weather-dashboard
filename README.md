@@ -157,7 +157,8 @@ function addCard(index, date, temperature, humidity) {
 ### Built With
     
 <p align="center">
-    <img src="https://img.shields.io/badge/-HTML-orange" href="https://developer.mozilla.org/en-US/docs/Web/HTML" alt="HMTL" />
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://img.shields.io/badge/-HTML-orange"  alt="HMTL" />
+    </a>
     <img src="https://img.shields.io/badge/-CSS-blue" href="https://developer.mozilla.org/en-US/docs/Web/CSS" alt="CSS" />
     <img src="https://img.shields.io/badge/-Javascript-yellow" href="https://www.javascript.com/" alt="Javascript" />
     <img src="https://img.shields.io/badge/-Bootstrap-blueviolet" href="https://getbootstrap.com/" alt="Bootstrap" />
