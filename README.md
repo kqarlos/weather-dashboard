@@ -152,9 +152,9 @@ function addCard(index, date, temperature, humidity) {
 
 ### Author
 
-- Carlos Toledo: [portfolio](https://professional-portfolio2020.herokuapp.com/)
-- Github: [kqarlos](https://www.github.com/kqarlos)
-- LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
+- 💼 Carlos Toledo: [portfolio](https://professional-portfolio2020.herokuapp.com/)
+- :octocat: Github: [kqarlos](https://www.github.com/kqarlos)
+- <i class="fab fa-linkedin"></i> LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
 
 
 ### Built With
