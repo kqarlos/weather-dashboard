@@ -31,7 +31,9 @@ This application allows to type in a city and get the current weather and a 5 da
 
 This application is compatible with the most commonly used web browsers.
 
-* [See Live Site](https://kqarlos.github.io/weather-dashboard)
+<p align="center">
+    <a align="center" href="https://kqarlos.github.io/weather-dashboard" target="_blank"><img src="https://img.shields.io/badge/-👉 See Live Site-success?style=for-the-badge"  alt="Live Site" /></a>
+</p>
 
 ## Usage
 
