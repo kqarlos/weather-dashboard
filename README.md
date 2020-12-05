@@ -1,12 +1,15 @@
 # Weather Dashboard
 
-  ![Languages](https://img.shields.io/github/languages/count/kqarlos/weather-dashboard)
-  ![Top Language](https://img.shields.io/github/languages/top/kqarlos/weather-dashboard)
-  ![Code Size](https://img.shields.io/github/languages/code-size/kqarlos/weather-dashboard)
-  ![Repo Size](https://img.shields.io/github/repo-size/kqarlos/weather-dashboard)
-  ![Total Lines](https://img.shields.io/tokei/lines/github/kqarlos/weather-dashboard)
-  ![Last Commit](https://img.shields.io/github/last-commit/kqarlos/weather-dashboard)
-  ![Followers](https://img.shields.io/github/followers/kqarlos?style=social)
+<p align="center">
+    <img src="https://img.shields.io/github/languages/count/kqarlos/weather-dashboard" alt="Languages" />
+    <img src="https://img.shields.io/github/languages/top/kqarlos/weather-dashboard" alt="Top Language" />
+    <img src="https://img.shields.io/github/languages/code-size/kqarlos/weather-dashboard" alt="Code Size" />
+    <img src="https://img.shields.io/github/repo-size/kqarlos/weather-dashboard" alt="Repo Size" />   
+    <img src="https://img.shields.io/tokei/lines/github/kqarlos/weather-dashboard" alt="Total Lines" />   
+    <img src="https://img.shields.io/github/last-commit/kqarlos/weather-dashboard" alt="Last Commit" />  
+    <img src="https://img.shields.io/github/issues/kqarlos/weather-dashboard" alt="Issues" />  
+    <img src="https://img.shields.io/github/followers/kqarlos?style=social" alt="Followers" />  
+</p>
 
 
 ## Description
