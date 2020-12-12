@@ -140,7 +140,6 @@ function query(location) {
         var lon = response.coord.lon;
 
         //query building...
-        APIKey = "e42ce6fff3cc019aac43965299686295";
         queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
 
         $.ajax({
@@ -190,8 +189,7 @@ function addCard(index, date, temperature, humidity, condition) {
 
     card.append(cardBody);
 
-    $("#" + index).empty();
-    $("#" + index).append(card);
+    $("#" + index).empty().append(card);
 }
 
 function addButton(location) {
@@ -231,14 +229,12 @@ function setUp() {
     if (localStorage.getItem("locations")) {
         locations = JSON.parse(localStorage.getItem("locations"));
         for (var i = 0; i < locations.length; i++) {
-            var location = locations[i];
-            addButton(location);
+            addButton(locations[i]);
+            console.log("setting up~")
         }
     }
 
 }
 
-
-$(document).ready(function(){ 
-    setUp();
-}); 
+//set up when ready
+$(setUp()); 
