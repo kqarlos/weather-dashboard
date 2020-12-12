@@ -24,8 +24,7 @@ function getIcon(condition) {
 
 //Clear information
 function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, condition) {
-    $("#location").empty();
-    $("#location").append(`${location} `);
+    $("#location").empty().append(`${location} `);
     var date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
     $("#location").append(`${date} `);
 
@@ -33,14 +32,11 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, co
     icon.addClass(getIcon(condition));
     $("#location").append(icon);
 
-    $("#temperature").empty();
-    $("#temperature").append(`${temperature} °F`);
+    $("#temperature").empty().append(`${temperature} °F`);
 
-    $("#humidity").empty();
-    $("#humidity").append(`${humidity}%`);
+    $("#humidity").empty().append(`${humidity}%`);
 
-    $("#windSpeed").empty();
-    $("#windSpeed").append(`${windSpeed} MPH`);
+    $("#windSpeed").empty().append(`${windSpeed} MPH`);
 
     $("#uv").empty();
     if (uv < 3)
@@ -68,9 +64,7 @@ $("#searchLocation").on("click", function (e) {
 
     addButton(location);
 
-    $("#currentWeather").css("display", "block");
-    $("#forecast").css("display", "block");
-
+    $("#currentWeather, #forecast").css("display", "block");
 });
 
 //Listen if one of the previouly searched cities' dynamically genereted button is clicked
@@ -78,8 +72,7 @@ $(document).on("click", ".city-button", function () {
     var location = $(this).attr("data-city");
     query(location);
     queryForecast(location);
-    $("#currentWeather").css("display", "block");
-    $("#forecast").css("display", "block");
+    $("#currentWeather, #forecast").css("display", "block");
 });
 
 function formatDate(date) {
@@ -98,8 +91,6 @@ function queryForecast(location) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(queryURL);
-        console.log(response);
         var forecast = response.list;
         for (var i = 0; i < forecast.length; i++) {
             var cardNumber = 0;
@@ -134,8 +125,6 @@ function query(location) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(queryURL);
-        console.log(response);
         var lat = response.coord.lat;
         var lon = response.coord.lon;
 
@@ -146,8 +135,6 @@ function query(location) {
             url: queryURL,
             method: "GET"
         }).then(function (uvresponse) {
-            // console.log(queryURL);
-            // console.log(uvresponse);
             renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value, response.weather[0].main);
         });
 
@@ -230,7 +217,6 @@ function setUp() {
         locations = JSON.parse(localStorage.getItem("locations"));
         for (var i = 0; i < locations.length; i++) {
             addButton(locations[i]);
-            console.log("setting up~")
         }
     }
 
