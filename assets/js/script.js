@@ -1,4 +1,5 @@
 var locations = [];
+var APIKey = "e42ce6fff3cc019aac43965299686295";
 
 //Get icon classes for font awesome
 function getIcon(condition) {
@@ -19,7 +20,7 @@ function getIcon(condition) {
             return "fas fa-smog";
         default:
             return "fas fa-cloud-sun";
-        }
+    }
 }
 
 //Clear information
@@ -84,7 +85,6 @@ function formatDate(date) {
 function queryForecast(location) {
 
     //query building...
-    var APIKey = "e42ce6fff3cc019aac43965299686295";
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIKey;
 
     $.ajax({
@@ -118,28 +118,18 @@ function queryForecast(location) {
 
 function query(location) {
     //query building
-    var APIKey = "e42ce6fff3cc019aac43965299686295";
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=" + APIKey;
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        var lat = response.coord.lat;
-        var lon = response.coord.lon;
+    fetch(queryURL).then(response => response.json().then(response => {
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
+            //query building...
+            queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
 
-        //query building...
-        queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (uvresponse) {
-            renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value, response.weather[0].main);
-        });
-
-
-    });
+            fetch(queryURL).then(uvresponse => uvresponse.json().then(uvresponse => {
+                renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value, response.weather[0].main);
+            }));
+        }));
 
 }
 
