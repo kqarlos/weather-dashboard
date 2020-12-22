@@ -159,7 +159,6 @@ function addCard(index, date, temperature, humidity) {
 
 ### Built With
     
-</br>
 <p align="center">
     <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://img.shields.io/badge/-HTML-orange?style=for-the-badge"  alt="HMTL" /></a>
     <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS-blue?style=for-the-badge" alt="CSS" /></a>
@@ -169,10 +168,10 @@ function addCard(index, date, temperature, humidity) {
     <a href="https://openweathermap.org/api"><img src="https://img.shields.io/badge/-Open Weather API-success?style=for-the-badge" alt="Open Weather API" /></a>
     <a href="https://jquery.com/"><img src="https://img.shields.io/badge/-JQuery-blue?style=for-the-badge" alt="JQuery" /></a>
 </p>
+</br>
 
 ## License
 
-</br>
 <p align="center">
     <img align="center" src="https://img.shields.io/github/license/kqarlos/weather-dashboard?style=for-the-badge" alt="MIT license" />
 </p>
