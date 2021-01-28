@@ -60,12 +60,10 @@ $("#searchLocation").on("click", function (e) {
     var location = $("#locationInput").val().trim();
     $("#locationInput").val("");
 
-    query(location);
+
+    query(location)
     queryForecast(location)
 
-    addButton(location);
-
-    $("#currentWeather, #forecast").css("display", "block");
 });
 
 //Listen if one of the previouly searched cities' dynamically genereted button is clicked
@@ -120,16 +118,34 @@ function query(location) {
     //query building
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=" + APIKey;
 
-    fetch(queryURL).then(response => response.json().then(response => {
-            var lat = response.coord.lat;
-            var lon = response.coord.lon;
-            //query building...
-            queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+    fetch(queryURL).then(response => {
+        if (response.ok) {
 
-            fetch(queryURL).then(uvresponse => uvresponse.json().then(uvresponse => {
-                renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value, response.weather[0].main);
-            }));
-        }));
+            response.json().then(response => {
+                var lat = response.coord.lat;
+                var lon = response.coord.lon;
+                //query building...
+                queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+
+                fetch(queryURL).then(uvresponse => uvresponse.json().then(uvresponse => {
+                    renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value, response.weather[0].main);
+                }));
+            })
+            addButton(location);
+            $("#currentWeather, #forecast").css("display", "block");
+
+        } else {
+            alert("Error: " + response.statusText);
+        }
+
+
+
+    }).catch((error) => {
+        // Notice this `.catch()` getting chained onto the end of the `.then()` method
+        alert(error);
+    });
+
+
 
 }
 
