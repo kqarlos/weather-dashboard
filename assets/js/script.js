@@ -58,6 +58,10 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, co
 $("#searchLocation").on("click", function (e) {
     e.preventDefault();
     var location = $("#locationInput").val().trim();
+    if (location === "") {
+        alert("Enter valid location");
+        return;
+    }
     $("#locationInput").val("");
 
     query(location);
