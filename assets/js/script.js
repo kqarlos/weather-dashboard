@@ -61,56 +61,19 @@ $("#searchLocation").on("click", function (e) {
     $("#locationInput").val("");
 
     query(location)
-    queryForecast(location)
-
 });
 
 //Listen if one of the previouly searched cities' dynamically genereted button is clicked
 $(document).on("click", ".city-button", function () {
     let location = $(this).attr("data-city");
     query(location);
-    queryForecast(location);
     $("#currentWeather, #forecast").css("display", "block");
 });
 
+//Formats UNIX timestamp into current date
 function formatDate(date) {
-    let fDate = date.split(" ")[0].split("-");
-    fDate = fDate[1] + "/" + fDate[2] + "/" + fDate[0];
-    return fDate;
-}
-
-function queryForecast(location) {
-
-    //query building...
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIKey;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        var forecast = response.list;
-        for (var i = 0; i < forecast.length; i++) {
-            var cardNumber = 0;
-            if (i === 0)
-                cardNumber = 0;
-            if (i === 6)
-                cardNumber = 1;
-            if (i === 14)
-                cardNumber = 2;
-            if (i === 22)
-                cardNumber = 3;
-            if (i === 30)
-                cardNumber = 4;
-
-            if (i === 0 || i === 6 || i === 14 || i === 22 || i === 30) {
-                var date = forecast[i].dt_txt;
-                var temperature = forecast[i].main.temp;
-                var humidity = forecast[i].main.humidity;
-                var condition = forecast[i].weather[0].main;
-                addCard(cardNumber, date, temperature, humidity, condition);
-            }
-        }
-    });
+    var date = new Date(date * 1000);
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getUTCFullYear()}`;
 }
 
 function query(location) {
@@ -121,15 +84,23 @@ function query(location) {
         if (response.ok) {
 
             response.json().then(response => {
+                console.log("1", response);
                 let lat = response.coord.lat;
                 let lon = response.coord.lon;
                 //query building...
-                // queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+                queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=${APIKey}`;
 
-                queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${APIKey}`;
+                fetch(queryURL).then(data => data.json().then(data => {
+                    console.log("2", data);
 
-                fetch(queryURL).then(uvresponse => uvresponse.json().then(uvresponse => {
-                    renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.current.uvi, response.weather[0].main);
+                    for (let i = 0; i < 5; i++){
+                        var date = data.daily[i].dt;
+                        var temperature = data.daily[i].temp.day;
+                        var humidity = data.daily[i].humidity;
+                        var condition = data.daily[i].weather[0].main;
+                        addCard(i, date, temperature, humidity, condition);
+                    }
+                    renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, data.current.uvi, response.weather[0].main);
                 }));
 
                 if (!locations.includes(response.name.toLowerCase())) {
@@ -144,9 +115,6 @@ function query(location) {
     }).catch((error) => {
         alert(error);
     });
-
-
-
 }
 
 function addCard(index, date, temperature, humidity, condition) {
