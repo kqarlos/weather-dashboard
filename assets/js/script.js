@@ -124,23 +124,24 @@ function query(location) {
                 let lat = response.coord.lat;
                 let lon = response.coord.lon;
                 //query building...
-                queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+                // queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+
+                queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${APIKey}`;
 
                 fetch(queryURL).then(uvresponse => uvresponse.json().then(uvresponse => {
-                    renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.value, response.weather[0].main);
+                    renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, uvresponse.current.uvi, response.weather[0].main);
                 }));
-            })
-            addButton(location);
-            $("#currentWeather, #forecast").css("display", "block");
+
+                if (!locations.includes(response.name.toLowerCase())) {
+                    addButton(location);
+                }
+                $("#currentWeather, #forecast").css("display", "block");
+            });
 
         } else {
             alert("Error: " + response.statusText);
         }
-
-
-
     }).catch((error) => {
-        // Notice this `.catch()` getting chained onto the end of the `.then()` method
         alert(error);
     });
 
