@@ -104,7 +104,7 @@ function query(location) {
                 }));
 
                 if (!locations.includes(response.name.toUpperCase())) {
-                    addButton(esponse.name.toUpperCase());
+                    addButton(response.name.toUpperCase());
                     locations.push(response.name.toUpperCase());
                     save();
                 }
@@ -179,7 +179,11 @@ function save() {
 function clear() {
     locations = [];
     save();
+    $(".city-button").remove();
 }
 
+$("#clear").on("click", function () {
+    clear();
+})
 //set up when ready
 $(setUp()); 
