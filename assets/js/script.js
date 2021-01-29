@@ -1,5 +1,5 @@
 var locations = [];
-var APIKey = "e42ce6fff3cc019aac43965299686295";
+const APIKey = "e42ce6fff3cc019aac43965299686295";
 
 //Get icon classes for font awesome
 function getIcon(condition) {
@@ -26,10 +26,10 @@ function getIcon(condition) {
 //Clear information
 function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, condition) {
     $("#location").empty().append(`${location} `);
-    var date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
+    let date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
     $("#location").append(`${date} `);
 
-    var icon = $("<span>");
+    let icon = $("<span>");
     icon.addClass(getIcon(condition));
     $("#location").append(icon);
 
@@ -57,9 +57,8 @@ function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, co
 //On click, handle logic to search for weather given a location
 $("#searchLocation").on("click", function (e) {
     e.preventDefault();
-    var location = $("#locationInput").val().trim();
+    let location = $("#locationInput").val().trim();
     $("#locationInput").val("");
-
 
     query(location)
     queryForecast(location)
@@ -68,14 +67,14 @@ $("#searchLocation").on("click", function (e) {
 
 //Listen if one of the previouly searched cities' dynamically genereted button is clicked
 $(document).on("click", ".city-button", function () {
-    var location = $(this).attr("data-city");
+    let location = $(this).attr("data-city");
     query(location);
     queryForecast(location);
     $("#currentWeather, #forecast").css("display", "block");
 });
 
 function formatDate(date) {
-    var fDate = date.split(" ")[0].split("-");
+    let fDate = date.split(" ")[0].split("-");
     fDate = fDate[1] + "/" + fDate[2] + "/" + fDate[0];
     return fDate;
 }
@@ -116,14 +115,14 @@ function queryForecast(location) {
 
 function query(location) {
     //query building
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=" + APIKey;
+    let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=" + APIKey;
 
     fetch(queryURL).then(response => {
         if (response.ok) {
 
             response.json().then(response => {
-                var lat = response.coord.lat;
-                var lon = response.coord.lon;
+                let lat = response.coord.lat;
+                let lon = response.coord.lon;
                 //query building...
                 queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
 
@@ -151,27 +150,27 @@ function query(location) {
 
 function addCard(index, date, temperature, humidity, condition) {
 
-    var card = $("<div>");
+    let card = $("<div>");
     card.addClass("card bg-primary text-white");
 
-    var cardBody = $("<div>");
+    let cardBody = $("<div>");
     cardBody.addClass("card-body");
 
-    var title = $("<h5>");
+    let title = $("<h5>");
     title.addClass("card-title font-weight-bold");
     title.css("font-size", "large");
     date = formatDate(date);
     title.text(date);
 
-    var icon = $("<span>");
+    let icon = $("<span>");
     icon.addClass(getIcon(condition));
 
-    var t = $("<p>");
+    let t = $("<p>");
     t.addClass("card-text pt-3");
     t.text("Temp: ");
     t.append(`${temperature} °F`);
 
-    var h = $("<p>");
+    let h = $("<p>");
     h.addClass("card-text pt-3");
     h.text(`Humidity: ${humidity}%`);
 
@@ -187,7 +186,7 @@ function addCard(index, date, temperature, humidity, condition) {
 
 function addButton(location) {
 
-    var button = $("<button>");
+    let button = $("<button>");
     button.addClass("list-group-item list-group-item-action city-button");
     button.attr("type", "button");
     button.attr("data-city", location);
@@ -198,8 +197,8 @@ function addButton(location) {
         //if set get it and check if we need to create new    
 
         locations = JSON.parse(localStorage.getItem("locations"));
-        var index = -1;
-        for (var i = 0; i < locations.length; i++) {
+        let index = -1;
+        for (let i = 0; i < locations.length; i++) {
             // id found
             if (locations[i] === location) {
                 index = i;
@@ -221,7 +220,7 @@ function addButton(location) {
 function setUp() {
     if (localStorage.getItem("locations")) {
         locations = JSON.parse(localStorage.getItem("locations"));
-        for (var i = 0; i < locations.length; i++) {
+        for (let i = 0; i < locations.length; i++) {
             addButton(locations[i]);
         }
     }
