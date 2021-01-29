@@ -93,7 +93,7 @@ function query(location) {
                 fetch(queryURL).then(data => data.json().then(data => {
                     console.log("2", data);
 
-                    for (let i = 0; i < 5; i++){
+                    for (let i = 0; i < 5; i++) {
                         var date = data.daily[i].dt;
                         var temperature = data.daily[i].temp.day;
                         var humidity = data.daily[i].humidity;
@@ -103,8 +103,10 @@ function query(location) {
                     renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, data.current.uvi, response.weather[0].main);
                 }));
 
-                if (!locations.includes(response.name.toLowerCase())) {
-                    addButton(location);
+                if (!locations.includes(response.name.toUpperCase())) {
+                    addButton(esponse.name.toUpperCase());
+                    locations.push(response.name.toUpperCase());
+                    save();
                 }
                 $("#currentWeather, #forecast").css("display", "block");
             });
@@ -160,40 +162,23 @@ function addButton(location) {
     button.attr("type", "button");
     button.attr("data-city", location);
     button.text(location)
-    $("#history").append(button);
-
-    if (localStorage.getItem("locations")) {
-        //if set get it and check if we need to create new    
-
-        locations = JSON.parse(localStorage.getItem("locations"));
-        let index = -1;
-        for (let i = 0; i < locations.length; i++) {
-            // id found
-            if (locations[i] === location) {
-                index = i;
-            }
-        }
-        //if index is -1 id was not found and we need to create a new 
-        if (index === -1) {
-            locations.push(location);
-        } else {
-            locations[index] = location;
-        }
-    } else {
-        locations.push(location);
-    }
-    //update locations iten on local storage
-    localStorage.setItem("locations", JSON.stringify(locations));
+    $("#history").prepend(button);
 }
 
 function setUp() {
-    if (localStorage.getItem("locations")) {
-        locations = JSON.parse(localStorage.getItem("locations"));
-        for (let i = 0; i < locations.length; i++) {
-            addButton(locations[i]);
-        }
+    locations = JSON.parse(localStorage.getItem("locations")) || []
+    for (let i = 0; i < locations.length; i++) {
+        addButton(locations[i]);
     }
+}
 
+function save() {
+    localStorage.setItem("locations", JSON.stringify(locations));
+}
+
+function clear() {
+    locations = [];
+    save();
 }
 
 //set up when ready
