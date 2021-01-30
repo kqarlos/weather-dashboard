@@ -36,65 +36,78 @@
         </div>
     </div>
 
-    <div class="container bg-light py-4 mt-0 float-left" id="leftBar">
-        <div class="row">
-            <div class="col-12 font-weight-bold" style="font-size: large;">Search for a City:</div>
-        </div>
-        <div class="row my-2">
-            <div class="col-12">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control h-100" type="search" placeholder="Search" aria-label="Search"
-                        id="locationInput">
-                    <button class="btn btn-primary h-100 fa fa-search" type="submit" id="searchLocation"></button>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="list-group" id="history">
-                    <!-- buttons go here -->
-                    <button class="list-group-item list-group-item-action" id="clear" type="button">Clear
-                        History</button>
+    <div class="row">
+        <div class="col-3">
+            <div class="bg-light py-4 mt-0" id="leftBar">
+                <div class="row">
+                    <div class="col-12 font-weight-bold" style="font-size: large;">Search for a City:</div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-12">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control h-100" type="search" placeholder="Search" aria-label="Search"
+                                id="locationInput">
+                            <button class="btn btn-primary h-100 fa fa-search" type="submit"
+                                id="searchLocation"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="list-group" id="history">
+                            <!-- buttons go here -->
+                            <button class="list-group-item list-group-item-action" id="clear" type="button">Clear
+                                History</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="mx-auto my-3 p-3 pt-2 border" id="currentWeather">
+                    <div class="row">
+                        <div class="col-12 py-2 font-weight-bold" id="location"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 py-2">Temperature: <span id="temperature"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 py-2">Humidity: <span id="humidity"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 py-2">Wind Speed: <span id="windSpeed"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 py-2">UV Index: <span class="p-1 rounded text-white" id="uv"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 py-2">Warnings: </div>
+                        <div class="col-12  pl-4 py-2" id="warnings"></div>
 
-    <div class="container mx-2 my-3 pb-3 pt-2 border float-right" id="currentWeather">
-        <div class="row">
-            <div class="col-12 py-2 font-weight-bold" id="location"></div>
-        </div>
-        <div class="row">
-            <div class="col-12 py-2">Temperature: <span id="temperature"></span></div>
-        </div>
-        <div class="row">
-            <div class="col-12 py-2">Humidity: <span id="humidity"></span></div>
-        </div>
-        <div class="row">
-            <div class="col-12 py-2">Wind Speed: <span id="windSpeed"></span></div>
-        </div>
-        <div class="row">
-            <div class="col-12 py-2">UV Index: <span class="p-1 rounded text-white" id="uv"></span></div>
-        </div>
-        <div class="row">
-            <div class="col-12 py-2" >Warnings: </div>
-            <div class="col-12  pl-4 py-2" id="warnings"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="container mx-auto px-0" id="forecast">
+                    <div class="row">
+                        <div class="col-12 py-2 font-weight-bold text-center" style="font-size: x-large;">5-Day forecast
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-lg-2 col-md-6 my-2" id="0"></div>
+                        <div class="col-lg-2 col-md-6 my-2" id="1"></div>
+                        <div class="col-lg-2 col-md-6 my-2" id="2"></div>
+                        <div class="col-lg-2 col-md-6 my-2" id="3"></div>
+                        <div class="col-lg-2 col-md-6 my-2" id="4"></div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-    </div>
 
-    <div class="container mx-2 px-0 float-right" id="forecast">
-        <div class="row">
-            <div class="col-12 py-2 font-weight-bold" style="font-size: x-large;">5-Day forecast</div>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 my-2" id="0"></div>
-            <div class="col-lg-2 my-2" id="1"></div>
-            <div class="col-lg-2 my-2" id="2"></div>
-            <div class="col-lg-2 my-2" id="3"></div>
-            <div class="col-lg-2 my-2" id="4"></div>
-        </div>
     </div>
 
 
