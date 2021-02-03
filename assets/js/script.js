@@ -25,6 +25,8 @@ function getIcon(condition) {
 
 //Clear information and render according to data
 function renderCurrentWeather(location, temperature, humidity, windSpeed, uv, condition) {
+    $("#welcome").css("display", "none");
+    $("#currentWeather, #forecast").css("display", "block");
     $("#location").empty().append(`${location} `);
     let date = moment().format("MM" + "/" + "DD" + "/" + "YYYY");
     $("#location").append(`${date} `);
@@ -78,15 +80,13 @@ $("#searchLocation").on("click", function (e) {
     e.preventDefault();
     let location = $("#locationInput").val().trim();
     $("#locationInput").val("");
-
     query(location)
 });
 
 //Listen if one of the previouly searched cities' dynamically genereted button is clicked
 $(document).on("click", ".city-button", function () {
     let location = $(this).attr("data-city");
-    query(location);
-    $("#currentWeather, #forecast").css("display", "block");
+    query(location);    
 });
 
 //Formats UNIX timestamp into current date
@@ -129,7 +129,6 @@ function query(location) {
                     locations.push(response.name.toUpperCase());
                     save();
                 }
-                $("#currentWeather, #forecast").css("display", "block");
             });
 
         } else {
@@ -146,7 +145,7 @@ function query(location) {
 function addCard(index, date, temperature, humidity, condition) {
 
     let card = $("<div>");
-    card.addClass("card bg-primary text-white");
+    card.addClass("card bg-info text-white");
 
     let cardBody = $("<div>");
     cardBody.addClass("card-body");
