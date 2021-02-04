@@ -145,22 +145,22 @@ function query(location) {
 function addCard(index, date, temperature, humidity, condition) {
 
     let card = $("<div>");
-    card.addClass("card bg-info text-white");
+    card.addClass("card bgWhiteTransparent");
 
     let cardBody = $("<div>");
     cardBody.addClass("card-body");
 
-    let title = $("<h5>");
-    title.addClass("card-title font-weight-bold");
-    title.css("font-size", "large");
+    let title = $("<h3>");
+    title.addClass("card-title font-weight-bold h4 text-center");
     date = formatDate(date);
-    title.text(date);
+    title.text(`${date} `);
 
     let icon = $("<span>");
     icon.addClass(getIcon(condition));
+    title.append(icon);
 
     let t = $("<p>");
-    t.addClass("card-text pt-3");
+    t.addClass("card-text pt-2");
     t.text("Temp: ");
     t.append(`${temperature} °F`);
 
@@ -169,7 +169,6 @@ function addCard(index, date, temperature, humidity, condition) {
     h.text(`Humidity: ${humidity}%`);
 
     cardBody.append(title);
-    cardBody.append(icon);
     cardBody.append(t);
     cardBody.append(h);
 
@@ -181,7 +180,7 @@ function addCard(index, date, temperature, humidity, condition) {
 // Renders a button with the name of a location into the city history container
 function addButton(location) {
     let button = $("<button>");
-    button.addClass("list-group-item list-group-item-action city-button");
+    button.addClass("list-group-item list-group-item-action city-button bgWhiteTransparent");
     button.attr("type", "button");
     button.attr("data-city", location);
     button.text(location)
