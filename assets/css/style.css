@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
 #currentWeather, #forecast {
     display: none;
-    margin: 0 20px;
-    width: 80%;
+}
+
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: x-large;
 }
 
 #bgVideo {
@@ -12,31 +17,7 @@
     min-height: 100%;
     z-index: -1;
 }
-#location {
-    font-size: x-large;
+
+.bgWhiteTransparent {
+    background-color: rgb(255, 255, 255, 0.5);
 }
-
-body {
-    font-family: sans-serif;
-}
-
-@media screen and (max-width: 1455px) {
-    
-    #currentWeather, #forecast {
-        width: 90%;
-    }
-    
-    #leftBar {
-        width: 100%;
-    }
-}
-/* 
-@media screen and (max-width: 712px) {
-    
-    #currentWeather, #forecast {
-        margin: 0;
-    }
-
-    
-
-} */
