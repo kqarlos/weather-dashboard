@@ -41,7 +41,7 @@ This application is compatible with the most commonly used web browsers.
 
 - Live
 
-![Site](assets/images/weather-live.gif)
+![Site](assets/images/live.gif)
 
 - After a couple of inputs 
 
