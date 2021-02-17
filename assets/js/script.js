@@ -86,7 +86,7 @@ $("#searchLocation").on("click", function (e) {
 //Listen if one of the previouly searched cities' dynamically genereted button is clicked
 $(document).on("click", ".city-button", function () {
     let location = $(this).attr("data-city");
-    query(location);    
+    query(location);
 });
 
 //Formats UNIX timestamp into current date
@@ -102,39 +102,40 @@ function query(location) {
 
     fetch(queryURL).then(response => {
         if (response.ok) {
-
-            response.json().then(response => {
-                console.log("1", response);
-                let lat = response.coord.lat;
-                let lon = response.coord.lon;
-                //query building for uvi and forecats...
-                queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=${APIKey}`;
-                fetch(queryURL).then(data => data.json().then(data => {
-                    console.log("2", data);
-                    //Call to generate a forecast card for the next five days
-                    for (let i = 0; i < 5; i++) {
-                        var date = data.daily[i].dt;
-                        var temperature = data.daily[i].temp.day;
-                        var humidity = data.daily[i].humidity;
-                        var condition = data.daily[i].weather[0].main;
-                        addCard(i, date, temperature, humidity, condition);
-                    }
-                    //Call to render current weather to main section
-                    renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, data.current.uvi, response.weather[0].main);
-                }));
-
-                // Check if location seaerched is new, if it is, add button, and update locations array and local storage
-                if (!locations.includes(response.name.toUpperCase())) {
-                    addButton(response.name.toUpperCase());
-                    locations.push(response.name.toUpperCase());
-                    save();
-                }
-            });
-
+            return response.json();
         } else {
             // Catch empty string
             alert("Error: " + response.statusText);
         }
+    }).then(response => {
+        console.log("1", response);
+        let lat = response.coord.lat;
+        let lon = response.coord.lon;
+        //query building for uvi and forecats...
+        queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=${APIKey}`;
+        fetch(queryURL).then(data => {
+            return data.json()
+        }).then(data => {
+            console.log("2", data);
+            //Call to generate a forecast card for the next five days
+            for (let i = 0; i < 5; i++) {
+                var date = data.daily[i].dt;
+                var temperature = data.daily[i].temp.day;
+                var humidity = data.daily[i].humidity;
+                var condition = data.daily[i].weather[0].main;
+                addCard(i, date, temperature, humidity, condition);
+            }
+            //Call to render current weather to main section
+            renderCurrentWeather(response.name, response.main.temp, response.main.humidity, response.wind.speed, data.current.uvi, response.weather[0].main);
+        });
+
+        // Check if location seaerched is new, if it is, add button, and update locations array and local storage
+        if (!locations.includes(response.name.toUpperCase())) {
+            addButton(response.name.toUpperCase());
+            locations.push(response.name.toUpperCase());
+            save();
+        }
+
     }).catch((error) => {
         //Catch invalid
         alert(error);
