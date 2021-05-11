@@ -1,0 +1,25 @@
+{
+  "name": "weather-dashboard",
+  "version": "1.0.0",
+  "description": "</br> <p align=\"center\">     <img src=\"https://img.shields.io/github/languages/count/kqarlos/weather-dashboard?style=for-the-badge\" alt=\"Languages\" />     <img src=\"https://img.shields.io/github/languages/top/kqarlos/weather-dashboard?style=for-the-badge\" alt=\"Top Language\" />     <img src=\"https://img.shields.io/github/languages/code-size/kqarlos/weather-dashboard?style=for-the-badge\" alt=\"Code Size\" />     <img src=\"https://img.shields.io/github/repo-size/kqarlos/weather-dashboard?style=for-the-badge\" alt=\"Repo Size\" />        <img src=\"https://img.shields.io/tokei/lines/github/kqarlos/weather-dashboard?style=for-the-badge\" alt=\"Total Lines\" />        <img src=\"https://img.shields.io/github/last-commit/kqarlos/weather-dashboard?style=for-the-badge\" alt=\"Last Commit\" />       <img src=\"https://img.shields.io/github/issues/kqarlos/weather-dashboard?style=for-the-badge\" alt=\"Issues\" />       <img src=\"https://img.shields.io/github/followers/kqarlos?style=social\" alt=\"Followers\" />   </p>",
+  "main": "assets/js/script.js",
+  "scripts": {
+    "webpack": "webpack --watch",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kqarlos/weather-dashboard.git"
+  },
+  "author": "Carlos Toledo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kqarlos/weather-dashboard/issues"
+  },
+  "homepage": "https://github.com/kqarlos/weather-dashboard#readme",
+  "devDependencies": {
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
+  }
+}
