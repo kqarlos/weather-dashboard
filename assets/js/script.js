@@ -1,3 +1,5 @@
+require("bootstrap");
+
 var locations = [];
 const APIKey = "e42ce6fff3cc019aac43965299686295";
 
